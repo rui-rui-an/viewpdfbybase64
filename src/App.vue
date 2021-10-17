@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">base64格式的pdf直接预览（IE可用）</router-link> |
-      <router-link to="/about">base64格式的pdf使用pdf.js预览</router-link>
+      <router-link to="/">base64格式pdf直接预览（IE可用）</router-link> |
+      <router-link to="/about">base64格式pdf使用pdf.js预览</router-link>
     </div>
     <router-view/>
   </div>
