@@ -32,6 +32,7 @@ export default {
   methods:{
     viewPdf(content){
       const file = 'data:application/pdf;base64,' + content
+      console.log(1111111111);
        sessionStorage.setItem("_imgUrl",file)
        window.open('/static/pdf/web/viewer.html')
     },
