@@ -13,6 +13,18 @@
         </template>
       </el-table-column>
     </el-table>
+    <div style="margin-top: 40px">
+      <input type="file" name="myfile" id="myfile" @change="preview($event)" />
+      <!--<button @click="changeLocal">点击预览本地pdf</button>-->
+      <iframe
+        v-if="showPdf"
+        id="previewPdf"
+        :src="'/pdf/web/viewer.html?file=' + fileUrl"
+        height="900"
+        width="100%"
+      >
+      </iframe>
+    </div>
   </div>
 </template>
 
@@ -22,6 +34,8 @@ export default {
   components: {},
   data () {
     return {
+      showPdf: false,
+      fileUrl: '',
       tableData: [
         {
           date: '2021-05-02',
@@ -35,7 +49,7 @@ export default {
   methods: {
     viewPdf (content) {
       let url = this.createDownloadFileUrl('pdf预览', content)
-      console.log(url);
+      console.log(url)
       window.open('/pdf/web/viewer.html?file=' + url)
     },
     createDownloadFileUrl (fileName, file) {
@@ -58,6 +72,30 @@ export default {
         u8arr[n] = bstr.charCodeAt(n)
       }
       return new Blob([u8arr], { type: mime })
+    },
+    // 这是打开本地文件进行预览
+    preview () {
+      let files = document.getElementById('myfile').files[0]
+      if (files.type !== 'application/pdf') {
+        alert('只能上传一份pdf文件哦～')
+        return
+      }
+      this.showPdf = true
+      this.fileUrl = this.getObjectURL(files)
+    },
+    getObjectURL (file) {
+      let url = null
+      if (window.createObjectURL != undefined) {
+        // basic
+        url = window.createObjectURL(file)
+      } else if (window.webkitURL != undefined) {
+        // webkit or chrome
+        url = window.webkitURL.createObjectURL(file)
+      } else if (window.URL != undefined) {
+        // mozilla(firefox)
+        url = window.URL.createObjectURL(file)
+      }
+      return url
     }
   }
 }
