@@ -35,7 +35,7 @@ export default {
   methods: {
     viewPdf (content) {
       let url = this.createDownloadFileUrl('pdf预览', content)
-      console.log(url);
+      // console.log(url);
       window.open('/pdf/web/viewer.html?file=' + url)
     },
     createDownloadFileUrl (fileName, file) {
