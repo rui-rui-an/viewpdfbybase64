@@ -35,7 +35,7 @@ export default {
   methods: {
     viewPdf (content) {
       if (!content) {
-        // console.log(content)
+        console.log(content)
         this.$message.error('暂无意见')
         return
       }
