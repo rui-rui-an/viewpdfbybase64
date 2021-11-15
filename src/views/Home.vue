@@ -34,18 +34,18 @@ export default {
   },
   methods: {
     viewPdf (content) {
-      // if (!content) {
-      //   console.log(content)
-      //   this.$message.error('暂无意见')
-      //   return
-      // }
-      // const blob = this.base64ToBlob(content)
-      // if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-      //   window.navigator.msSaveOrOpenBlob(blob)
-      // } else {
-      //   const fileURL = URL.createObjectURL(blob)
-      //   window.open(fileURL)
-      // }
+      if (!content) {
+        console.log(content)
+        this.$message.error('暂无意见')
+        return
+      }
+      const blob = this.base64ToBlob(content)
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(blob)
+      } else {
+        const fileURL = URL.createObjectURL(blob)
+        window.open(fileURL)
+      }
     },
     base64ToBlob (code) {
       code = code.replace(/[\n\r]/g, '')
