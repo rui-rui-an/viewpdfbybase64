@@ -48,14 +48,14 @@ export default {
       }
     },
     base64ToBlob (code) {
-      code = code.replace(/[\n\r]/g, '')
-      const raw = window.atob(code)
-      const rawLength = raw.length
-      const uInt8Array = new Uint8Array(rawLength)
-      for (let i = 0; i < rawLength; ++i) {
-        uInt8Array[i] = raw.charCodeAt(i)
-      }
-      return new Blob([uInt8Array], { type: 'application/pdf' })
+      // code = code.replace(/[\n\r]/g, '')
+      // const raw = window.atob(code)
+      // const rawLength = raw.length
+      // const uInt8Array = new Uint8Array(rawLength)
+      // for (let i = 0; i < rawLength; ++i) {
+      //   uInt8Array[i] = raw.charCodeAt(i)
+      // }
+      // return new Blob([uInt8Array], { type: 'application/pdf' })
     }
   }
 }
